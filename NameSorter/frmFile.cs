@@ -52,11 +52,14 @@ namespace NameSorter
             {
                 var lines = File.ReadLines(txtFileName.Text)
                      .OrderBy(x => x[0]).ToList();
-
+                string output = "";
                 foreach (var line in lines)
                 {
                     lst.Items.Add(line);
+                    output += line+ Environment.NewLine;
                 }
+                File.WriteAllText(Application.StartupPath + "\\sorted-names-lists.txt", output);
+
             }
         }
 
